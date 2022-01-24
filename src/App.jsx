@@ -1,13 +1,12 @@
-import NavBar from './NavBar/NavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import AppNavBar from './AppNavBar/AppNavBar';
 
 const App = () => (
   <div className="App">
-    <NavBar />
 
-    <br />
-    <br />
-    <br />
-    React App - step 1
+    <AppNavBar />
+
   </div>
 );
 
