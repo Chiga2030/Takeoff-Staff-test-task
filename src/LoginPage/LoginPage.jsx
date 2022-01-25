@@ -14,7 +14,7 @@ const LoginPage = () => (
           <option>User 2</option>
           <option>User 3</option>
         </Form.Select>
-        <Button className="col-sm-2 ms-4" type="button">Submit</Button>
+        <Button className="col-sm-2 ms-4" type="button">Login</Button>
       </Form>
     </Container>
   </div>
