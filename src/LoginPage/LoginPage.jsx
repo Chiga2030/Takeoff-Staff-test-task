@@ -13,8 +13,8 @@ const LoginPage = ({
         <Form.Select
           className="col form-select-lg px-4" id="userSelect">
           { users.map(item => (
-            <option key={ item }>
-              { item }
+            <option key={ item.name }>
+              { item.name }
             </option>)) }
         </Form.Select>
         <Button className="col-sm-2 ms-4" type="button">Login</Button>

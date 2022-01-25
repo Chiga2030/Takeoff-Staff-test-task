@@ -11,25 +11,38 @@ import {
   createContext,
 } from 'react';
 
-import AppNavBar from './AppNavBar/AppNavBar';
+import AppNavBarContainer from './AppNavBar/AppNavBarContainer';
 import LoginPageContainer from './LoginPage/LoginPageContainer';
 import ContactsPage from './ContactsPage/ContactsPage';
 
-const users = {
-  names: [
-    'John',
-    'Bill',
-    'Raymond',
-  ],
-};
 
-export const UsersContext = createContext(users.names);
+const initialUsers = [
+  {
+    name: 'Bret',
+    isAuth: false,
+  },
+  {
+    name: 'Antonette',
+    isAuth: false,
+  },
+  {
+    name: 'Samantha',
+    isAuth: false,
+  },
+  {
+    name: 'not exsist user',
+    isAuth: false,
+  },
+];
+
+
+export const UsersContext = createContext(initialUsers);
 
 
 const App = () => (
   <Router>
     <div className="d-flex flex-column vh-100">
-      <AppNavBar />
+      <AppNavBarContainer />
 
       <Switch>
         <Route path='/' exact>

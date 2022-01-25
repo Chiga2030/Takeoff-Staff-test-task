@@ -7,7 +7,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 
 
-const AppNavBar = () => (
+const AppNavBar = ({
+  currentUser = 'Guest',
+}) => (
   <Container className="mb-4">
     <Navbar bg="light" expand="lg">
       <Navbar.Brand>
@@ -27,7 +29,7 @@ const AppNavBar = () => (
       <Navbar.Text>
         Signed in as:
         <NavLink to="/login" className="ms-1">
-          Guest
+          { currentUser }
         </NavLink>
       </Navbar.Text>
     </Navbar>
