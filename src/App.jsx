@@ -27,7 +27,7 @@ const initialUsers = [
   },
   {
     name: 'Samantha',
-    isAuth: false,
+    isAuth: true,
   },
   {
     name: 'not exsist user',
@@ -37,6 +37,7 @@ const initialUsers = [
 
 
 export const UsersContext = createContext(initialUsers);
+export const CurrentUserContext = createContext('user from props');
 
 
 const App = () => (

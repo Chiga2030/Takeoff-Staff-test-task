@@ -12,7 +12,7 @@
     }
   },
   "rules": {
-    "no-console": "error",
+    // "no-console": "error",
     "no-debugger": "error",
     "spaced-comment": ["error", "always"],
     "array-bracket-spacing": ["error", "never"],
