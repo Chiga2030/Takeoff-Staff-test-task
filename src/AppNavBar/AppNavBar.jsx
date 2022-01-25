@@ -8,7 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 
 
 const AppNavBar = () => (
-  <Container>
+  <Container className="mb-4">
     <Navbar bg="light" expand="lg">
       <Navbar.Brand>
         Takeoff Staff
@@ -19,7 +19,7 @@ const AppNavBar = () => (
           Login
         </NavLink>
 
-        <NavLink to="/contacnts" className="ms-2">
+        <NavLink to="/contacts" className="ms-2">
           Contacts
         </NavLink>
       </Nav>

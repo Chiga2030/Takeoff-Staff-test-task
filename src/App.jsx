@@ -9,6 +9,7 @@ import {
 
 import AppNavBar from './AppNavBar/AppNavBar';
 import LoginPage from './LoginPage/LoginPage';
+import ContactsPage from './ContactsPage/ContactsPage';
 
 
 const App = () => (
@@ -23,6 +24,10 @@ const App = () => (
 
         <Route path='/login'>
           <LoginPage />
+        </Route>
+
+        <Route path='/contacts'>
+          <ContactsPage />
         </Route>
 
         <Redirect to='/' />
