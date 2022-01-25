@@ -3,7 +3,7 @@ import {
 } from 'react';
 import {
   CurrentUserContext,
-} from '../App';
+} from '../App/AppContainer';
 
 import AppNavBar from './AppNavBar';
 
@@ -13,9 +13,7 @@ const AppNavBarContainer = () => {
 
 
   return (
-    <>
-      <AppNavBar currentUser={ currentUser }/>
-    </>
+    <AppNavBar currentUser={ currentUser }/>
   );
 };
 

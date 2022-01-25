@@ -7,37 +7,9 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import {
-  createContext,
-} from 'react';
-
-import AppNavBarContainer from './AppNavBar/AppNavBarContainer';
-import LoginPageContainer from './LoginPage/LoginPageContainer';
-import ContactsPage from './ContactsPage/ContactsPage';
-
-
-const initialUsers = [
-  {
-    name: 'Bret',
-    isAuth: false,
-  },
-  {
-    name: 'Antonette',
-    isAuth: false,
-  },
-  {
-    name: 'Samantha',
-    isAuth: true,
-  },
-  {
-    name: 'not exsist user',
-    isAuth: false,
-  },
-];
-
-
-export const UsersContext = createContext(initialUsers);
-export const CurrentUserContext = createContext('user from props');
+import AppNavBarContainer from '../AppNavBar/AppNavBarContainer';
+import LoginPageContainer from '../LoginPage/LoginPageContainer';
+import ContactsPage from '../ContactsPage/ContactsPage';
 
 
 const App = () => (

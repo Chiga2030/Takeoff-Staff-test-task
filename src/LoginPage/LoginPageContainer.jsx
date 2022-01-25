@@ -3,7 +3,7 @@ import {
 } from 'react';
 import {
   UsersContext,
-} from '../App';
+} from '../App/AppContainer';
 
 import LoginPage from './LoginPage';
 
@@ -12,9 +12,7 @@ const LoginPageContainer = () => {
   const users = useContext(UsersContext);
 
   return (
-    <>
-      <LoginPage users={ users } />
-    </>
+    <LoginPage users={ users } />
   );
 };
 
