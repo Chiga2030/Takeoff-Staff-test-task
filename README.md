@@ -6,6 +6,8 @@
 
 Техническое задание - [ссылка](https://docs.google.com/document/d/1PFafdSZ2PcQLRtAyotvIupDmpGZ_6DnN9Q1kk0ogJm4/edit#)
 
+---
+
 О выполненых задачах:
 - Работа с UI библиотекой Bootstrap-v5
 - 
