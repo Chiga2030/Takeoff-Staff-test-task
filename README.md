@@ -2,4 +2,6 @@
 
 Тестовое задание на вакансию Front-end Developer для Takeoff Staff
 
-[Техническое задание: ](https://docs.google.com/document/d/1PFafdSZ2PcQLRtAyotvIupDmpGZ_6DnN9Q1kk0ogJm4/edit#)
+Посмотреть промежуточный результат - [ссылка](https://chiga2030.github.io/Takeoff-Staff-test-task/#/)
+
+Техническое задание - [ссылка](https://docs.google.com/document/d/1PFafdSZ2PcQLRtAyotvIupDmpGZ_6DnN9Q1kk0ogJm4/edit#)
