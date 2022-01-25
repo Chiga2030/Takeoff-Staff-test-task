@@ -7,9 +7,23 @@ import {
   Redirect,
 } from 'react-router-dom';
 
+import {
+  createContext,
+} from 'react';
+
 import AppNavBar from './AppNavBar/AppNavBar';
-import LoginPage from './LoginPage/LoginPage';
+import LoginPageContainer from './LoginPage/LoginPageContainer';
 import ContactsPage from './ContactsPage/ContactsPage';
+
+const users = {
+  names: [
+    'John',
+    'Bill',
+    'Raymond',
+  ],
+};
+
+export const UsersContext = createContext(users.names);
 
 
 const App = () => (
@@ -19,11 +33,11 @@ const App = () => (
 
       <Switch>
         <Route path='/' exact>
-          <LoginPage />
+          <LoginPageContainer />
         </Route>
 
         <Route path='/login'>
-          <LoginPage />
+          <LoginPageContainer />
         </Route>
 
         <Route path='/contacts'>
