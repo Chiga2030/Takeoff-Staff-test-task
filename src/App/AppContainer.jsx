@@ -16,7 +16,7 @@ const initialUsers = [
   },
   {
     name: 'Samantha',
-    isAuth: true,
+    isAuth: false,
   },
   {
     name: 'not exsist user',
