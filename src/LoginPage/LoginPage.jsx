@@ -1,27 +1,27 @@
+import {
+  useState,
+} from 'react';
+
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
+import ProfileCard from '../ProfileCard/ProfileCard';
+import LoginFormContainer from '../LoginForm/LoginFormContainer';
 
 
-const LoginPage = ({
-  users,
-}) => (
-  <div className="d-flex h-100 align-items-center">
-    <Container className=" ">
-      <Form.Label htmlFor="userSelect">Select user:</Form.Label>
-      <Form className="d-flex justify-content-left">
-        <Form.Select
-          className="col form-select-lg px-4" id="userSelect">
-          { users.map(item => (
-            <option key={ item.name }>
-              { item.name }
-            </option>)) }
-        </Form.Select>
-        <Button className="col-sm-2 ms-4" type="button">Login</Button>
-      </Form>
-    </Container>
-  </div>
-);
+const LoginPage = () => {
+  const [
+    isAuth,
+    // setIsAuth,
+  ] = useState(false);
+
+  return (
+    <div className="d-flex h-100 align-items-center">
+      <Container className=" ">
+        { !isAuth ? <LoginFormContainer /> : <ProfileCard /> }
+      </Container>
+    </div>
+  );
+};
 
 
 export default LoginPage;
