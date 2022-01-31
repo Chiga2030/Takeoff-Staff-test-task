@@ -1,6 +1,6 @@
 import {
-  ACTION,
-} from '../actions/action';
+  SET_USER_DATA,
+} from '../actions/setUserData';
 
 
 const initialState = {
@@ -22,21 +22,16 @@ const initialState = {
       isAuth: false,
     },
   ],
+  loginedUser: false,
 };
 
 
 export const userList = (state = initialState, action) => {
   switch (action.type) {
-  case ACTION: {
-    const newStore = [
-      ...action.payload,
-    ];
-
+  case SET_USER_DATA: {
     return {
       ...state,
-      items: [
-        ...newStore,
-      ],
+      loginedUser: action.payload,
     };
 
     break;

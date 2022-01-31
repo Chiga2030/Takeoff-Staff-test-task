@@ -1,9 +1,17 @@
+import {
+  connect,
+} from 'react-redux';
+
 import AppNavBar from './AppNavBar';
 
 
-const AppNavBarContainer = () => (
-  <AppNavBar currentUser={ 'USER FROM PROPS' }/>
+const AppNavBarContainer = props => (
+  <AppNavBar loginnedUser={ props.loginnedUser }/>
 );
 
 
-export default AppNavBarContainer;
+export default connect(
+  state => ({
+    loginnedUser: state.userList.loginedUser.name,
+  })
+)(AppNavBarContainer);

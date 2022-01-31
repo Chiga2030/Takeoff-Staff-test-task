@@ -1,8 +1,12 @@
+import useFetchUser from '../hooks/useFetchUser';
+
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const LoginForm = ({
   users,
+  setUserData,
 }) => (
   <>
     <Form.Label htmlFor="userSelect">Select user:</Form.Label>
@@ -20,7 +24,9 @@ const LoginForm = ({
       </Form.Select>
 
       <Button
-        onClick={ () => console.log('test') }
+        onClick={ () => useFetchUser(
+          document.forms.userSelectForm.select.value)
+          .then(data => setUserData(...data)) }
         className="col-sm-2 ms-4"
         type="button"
       >
