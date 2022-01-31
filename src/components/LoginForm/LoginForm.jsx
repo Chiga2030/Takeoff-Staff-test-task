@@ -26,13 +26,11 @@ const LoginForm = ({
       </Form.Select>
 
       <Button
-        onClick={ () => useFetchUser(
-          document.forms.userSelectForm.select.value)
-          .then(data => {
-            setFetchUserDataStatus('request');
-            return data;
-          })
-          .then(data => setUserData(...data)) }
+        onClick={ () => {
+          setFetchUserDataStatus('request');
+          useFetchUser(document.forms.userSelectForm.select.value)
+            .then(data => setUserData(...data));
+        } }
         className="col-sm-2 ms-4"
         type="button"
       >
