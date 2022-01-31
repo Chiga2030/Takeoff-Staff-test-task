@@ -1,24 +1,27 @@
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
+import ProfileCard from '../ProfileCard/ProfileCard';
+import LoginFormContainer from '../LoginForm/LoginFormContainer';
 
 
-const LoginPage = () => (
-  <div className="d-flex h-100 align-items-center">
-    <Container className=" ">
-      <Form.Label htmlFor="userSelect">Select user:</Form.Label>
-      <Form className="d-flex justify-content-left">
-        <Form.Select
-          className="col form-select-lg px-4" id="userSelect">
-          <option>User 1</option>
-          <option>User 2</option>
-          <option>User 3</option>
-        </Form.Select>
-        <Button className="col-sm-2 ms-4" type="button">Login</Button>
-      </Form>
-    </Container>
-  </div>
-);
+const LoginPage = ({
+  loginedUser,
+}) => {
+  const requestState = {
+    success: <ProfileCard loginedUser={ loginedUser } />,
+    request: 'LOADING',
+  };
+
+
+  return (
+    <div className="d-flex h-100 align-items-center">
+      <Container>
+        { loginedUser
+          ? requestState[loginedUser.fetchStatus] : <LoginFormContainer /> }
+      </Container>
+    </div>
+  );
+};
 
 
 export default LoginPage;

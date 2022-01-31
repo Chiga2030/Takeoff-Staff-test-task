@@ -7,23 +7,23 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import AppNavBar from './AppNavBar/AppNavBar';
-import LoginPage from './LoginPage/LoginPage';
-import ContactsPage from './ContactsPage/ContactsPage';
+import AppNavBarContainer from '../AppNavBar/AppNavBarContainer';
+import LoginPageContainer from '../LoginPage/LoginPageContainer';
+import ContactsPage from '../ContactsPage/ContactsPage';
 
 
 const App = () => (
   <Router>
     <div className="d-flex flex-column vh-100">
-      <AppNavBar />
+      <AppNavBarContainer />
 
       <Switch>
         <Route path='/' exact>
-          <LoginPage />
+          <LoginPageContainer />
         </Route>
 
         <Route path='/login'>
-          <LoginPage />
+          <LoginPageContainer />
         </Route>
 
         <Route path='/contacts'>
