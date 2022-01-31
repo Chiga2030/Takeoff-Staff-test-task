@@ -4,7 +4,8 @@ const useFetchUser = userName => {
   const param = `users?username=${userName}`;
   const url = `${protocol}${host}${param}`;
 
-  return fetch(url)
+  return new Promise(resolve => setTimeout(() => resolve(), 2000))
+    .then(() => fetch(url))
     .then(response => response.json())
     .then(data => data);
 };
