@@ -49,7 +49,8 @@ export const userList = (state = initialState, action) => {
     return {
       ...state,
       loginedUser: {
-        fetchStatus: action.payload,
+        fetchStatus: action.payload.status,
+        statusDescription: action.payload.description,
       },
     };
 

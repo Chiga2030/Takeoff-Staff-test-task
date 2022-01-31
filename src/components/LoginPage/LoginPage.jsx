@@ -11,6 +11,7 @@ const LoginPage = ({
   const requestState = {
     success: <ProfileCardContainer />,
     request: <FetchSpinner />,
+    fail: 'это фиаско',
   };
 
 

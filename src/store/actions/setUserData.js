@@ -7,7 +7,10 @@ export const setUserData = userData => ({
   payload: userData,
 });
 
-export const setFetchUserDataStatus = status => ({
+export const setFetchUserDataStatus = (status, description) => ({
   type: SET_FETCH_USER_DATA_STATUS,
-  payload: status,
+  payload: {
+    status,
+    description,
+  },
 });

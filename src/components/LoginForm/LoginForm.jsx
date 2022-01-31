@@ -13,7 +13,10 @@ const LoginForm = ({
   const onClickHandler = () => {
     setFetchUserDataStatus('request');
     useFetchUser(document.forms.userSelectForm.select.value)
-      .then(data => setUserData(...data));
+      .then(data => setUserData(...data))
+      .catch(error => {
+        setFetchUserDataStatus('fail', error.message);
+      });
   };
 
 
