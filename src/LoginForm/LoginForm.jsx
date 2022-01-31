@@ -1,6 +1,7 @@
 import useFetchUser from '../hooks/useFetchUser';
 
 
+import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -9,7 +10,7 @@ const LoginForm = ({
   setUserData,
   setFetchUserDataStatus,
 }) => (
-  <>
+  <Container>
     <Form.Label htmlFor="userSelect">Select user:</Form.Label>
     <Form
       name="userSelectForm"
@@ -41,7 +42,7 @@ const LoginForm = ({
         Login
       </Button>
     </Form>
-  </>
+  </Container>
 );
 
 
