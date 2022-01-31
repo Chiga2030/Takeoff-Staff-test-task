@@ -15,7 +15,7 @@ const LoginPage = ({
 
   return (
     <div className="d-flex h-100 align-items-center">
-      <Container className=" ">
+      <Container>
         { loginedUser
           ? requestState[loginedUser.fetchStatus] : <LoginFormContainer /> }
       </Container>
