@@ -32,9 +32,6 @@ const LoginForm = ({
             setFetchUserDataStatus('request');
             return data;
           })
-          .then(data => new Promise(resolve => setTimeout(() => {
-            resolve(data);
-          }, 2000)))
           .then(data => setUserData(...data)) }
         className="col-sm-2 ms-4"
         type="button"
