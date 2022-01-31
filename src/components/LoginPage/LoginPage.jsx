@@ -2,22 +2,22 @@ import Container from 'react-bootstrap/Container';
 
 import LoginFormContainer from '../LoginForm/LoginFormContainer';
 import FetchSpinner from '../FetchSpinner/FetchSpinner';
-import ProfileCard from '../ProfileCard/ProfileCard';
+import ProfileCardContainer from '../ProfileCard/ProfileCardContainer';
 
 
 const LoginPage = ({
-  loginedUser,
+  fetchStatus,
 }) => {
   const requestState = {
-    success: <ProfileCard loginedUser={ loginedUser } />,
+    success: <ProfileCardContainer />,
     request: <FetchSpinner />,
   };
 
 
   return (
     <Container className="d-flex h-100 align-items-center">
-      { loginedUser
-        ? requestState[loginedUser.fetchStatus] : <LoginFormContainer /> }
+      { fetchStatus
+        ? requestState[fetchStatus] : <LoginFormContainer /> }
     </Container>
   );
 };

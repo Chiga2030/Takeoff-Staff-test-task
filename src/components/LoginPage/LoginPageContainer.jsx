@@ -6,12 +6,12 @@ import LoginPage from './LoginPage';
 
 
 const LoginPageContainer = props => (
-  <LoginPage loginedUser={ props.loginedUser }/>
+  <LoginPage fetchStatus={ props.fetchStatus }/>
 );
 
 
 export default connect(
   state => ({
-    loginedUser: state.userList.loginedUser,
+    fetchStatus: state.userList.loginedUser.fetchStatus,
   })
 )(LoginPageContainer);

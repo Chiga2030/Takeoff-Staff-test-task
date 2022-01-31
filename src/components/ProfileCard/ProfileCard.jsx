@@ -1,15 +1,20 @@
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 
 
 const ProfileCard = ({
   loginedUser,
+  onLogout,
 }) => (
-  <Container className="d-flex justify-content-center">
-    <Card style={ {
-      width: '20rem',
-    } }>
+  <Container className="d-flex justify-content-center flex-column w-auto">
+    <Card
+      className="mb-3"
+      style={ {
+        width: '20rem',
+      } }
+    >
       <Card.Header>
         <strong>Your profile</strong>
       </Card.Header>
@@ -30,6 +35,13 @@ const ProfileCard = ({
           ${loginedUser.address.suite}` }
       </Card.Footer>
     </Card>
+    <Button
+      variant="dark"
+      className="w-50 align-self-end"
+      onClick={ onLogout }
+    >
+      Logout
+    </Button>
   </Container>
 );
 

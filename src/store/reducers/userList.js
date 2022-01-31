@@ -2,6 +2,9 @@ import {
   SET_USER_DATA,
   SET_FETCH_USER_DATA_STATUS,
 } from '../actions/setUserData';
+import {
+  ON_LOGOUT,
+} from '../actions/onLogout';
 
 
 const initialState = {
@@ -48,6 +51,15 @@ export const userList = (state = initialState, action) => {
       loginedUser: {
         fetchStatus: action.payload,
       },
+    };
+
+    break;
+  }
+
+  case ON_LOGOUT: {
+    return {
+      ...state,
+      loginedUser: false,
     };
 
     break;
