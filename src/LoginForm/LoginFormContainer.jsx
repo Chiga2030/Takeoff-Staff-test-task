@@ -1,22 +1,19 @@
 import {
-  useContext,
-} from 'react';
-import {
-  UsersContext,
-} from '../App/AppContainer';
+  connect,
+} from 'react-redux';
 
 import LoginForm from './LoginForm';
 
 
-const LoginFormContainer = () => {
-  const users = useContext(UsersContext);
-
-  return (
-    <LoginForm
-      users={ users }
-    />
-  );
-};
+const LoginFormContainer = props => (
+  <LoginForm
+    users = { props.users }
+  />
+);
 
 
-export default LoginFormContainer;
+export default connect(
+  state => ({
+    users: state.userList.users,
+  }),
+)(LoginFormContainer);
