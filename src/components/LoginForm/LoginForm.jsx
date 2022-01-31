@@ -9,36 +9,41 @@ const LoginForm = ({
   users,
   setUserData,
   setFetchUserDataStatus,
-}) => (
-  <Container>
-    <Form.Label htmlFor="userSelect">Select user:</Form.Label>
-    <Form
-      name="userSelectForm"
-      className="d-flex justify-content-left"
-    >
-      <Form.Select
-        name="select"
-        className="col form-select-lg px-4" id="userSelect">
-        { users.map(item => (
-          <option key={ item.name }>
-            { item.name }
-          </option>)) }
-      </Form.Select>
+}) => {
+  const onClickHandler = () => {
+    setFetchUserDataStatus('request');
+    useFetchUser(document.forms.userSelectForm.select.value)
+      .then(data => setUserData(...data));
+  };
 
-      <Button
-        onClick={ () => {
-          setFetchUserDataStatus('request');
-          useFetchUser(document.forms.userSelectForm.select.value)
-            .then(data => setUserData(...data));
-        } }
-        className="col-sm-2 ms-4"
-        type="button"
+
+  return (
+    <Container>
+      <Form.Label htmlFor="userSelect">Select user:</Form.Label>
+      <Form
+        name="userSelectForm"
+        className="d-flex justify-content-left"
       >
-        Login
-      </Button>
-    </Form>
-  </Container>
-);
+        <Form.Select
+          name="select"
+          className="col form-select-lg px-4" id="userSelect">
+          { users.map(item => (
+            <option key={ item.name }>
+              { item.name }
+            </option>)) }
+        </Form.Select>
+
+        <Button
+          onClick={ onClickHandler }
+          className="col-sm-2 ms-4"
+          type="button"
+        >
+          Login
+        </Button>
+      </Form>
+    </Container>
+  );
+};
 
 
 export default LoginForm;
