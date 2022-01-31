@@ -4,7 +4,7 @@ import {
 import {
   setUserData,
   setFetchUserDataStatus,
-} from '../store/actions/setUserData';
+} from '../../store/actions/setUserData';
 
 import LoginForm from './LoginForm';
 

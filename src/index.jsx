@@ -6,7 +6,7 @@ import {
 } from 'react-redux';
 import store from './store/store';
 
-import AppContainer from './App/AppContainer';
+import AppContainer from './components/App/AppContainer';
 
 
 ReactDOM.render(

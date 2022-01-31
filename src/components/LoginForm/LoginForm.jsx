@@ -1,4 +1,4 @@
-import useFetchUser from '../hooks/useFetchUser';
+import useFetchUser from '../../hooks/useFetchUser';
 
 
 import Container from 'react-bootstrap/Container';
