@@ -8,7 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 
 
 const AppNavBar = ({
-  loginnedUser = 'Guest',
+  loginedUser = 'Guest',
 }) => (
   <Container className="mb-4">
     <Navbar bg="light" expand="lg">
@@ -29,7 +29,7 @@ const AppNavBar = ({
       <Navbar.Text>
         Signed in as:
         <NavLink to="/login" className="ms-1">
-          { loginnedUser }
+          { loginedUser }
         </NavLink>
       </Navbar.Text>
     </Navbar>

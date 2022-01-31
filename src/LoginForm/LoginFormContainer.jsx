@@ -3,6 +3,7 @@ import {
 } from 'react-redux';
 import {
   setUserData,
+  setFetchUserDataStatus,
 } from '../store/actions/setUserData';
 
 import LoginForm from './LoginForm';
@@ -12,6 +13,7 @@ const LoginFormContainer = props => (
   <LoginForm
     users={ props.users }
     setUserData={ props.setUserData }
+    setFetchUserDataStatus={ props.setFetchUserDataStatus }
   />
 );
 
@@ -22,5 +24,6 @@ export default connect(
   }),
   {
     setUserData,
+    setFetchUserDataStatus,
   }
 )(LoginFormContainer);

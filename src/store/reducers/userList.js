@@ -1,5 +1,6 @@
 import {
   SET_USER_DATA,
+  SET_FETCH_USER_DATA_STATUS,
 } from '../actions/setUserData';
 
 
@@ -31,11 +32,27 @@ export const userList = (state = initialState, action) => {
   case SET_USER_DATA: {
     return {
       ...state,
-      loginedUser: action.payload,
+      loginedUser: {
+        fetchStatus: 'success',
+        ...action.payload,
+      },
     };
 
     break;
   }
+
+
+  case SET_FETCH_USER_DATA_STATUS: {
+    return {
+      ...state,
+      loginedUser: {
+        fetchStatus: action.payload,
+      },
+    };
+
+    break;
+  }
+
 
   default:
     return {

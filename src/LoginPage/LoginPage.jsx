@@ -1,23 +1,23 @@
-import {
-  useState,
-} from 'react';
-
 import Container from 'react-bootstrap/Container';
 
 import ProfileCard from '../ProfileCard/ProfileCard';
 import LoginFormContainer from '../LoginForm/LoginFormContainer';
 
 
-const LoginPage = () => {
-  const [
-    isAuth,
-    // setIsAuth,
-  ] = useState(false);
+const LoginPage = ({
+  loginedUser,
+}) => {
+  const requestState = {
+    success: <ProfileCard loginedUser={ loginedUser } />,
+    request: 'LOADING',
+  };
+
 
   return (
     <div className="d-flex h-100 align-items-center">
       <Container className=" ">
-        { !isAuth ? <LoginFormContainer /> : <ProfileCard /> }
+        { loginedUser
+          ? requestState[loginedUser.fetchStatus] : <LoginFormContainer /> }
       </Container>
     </div>
   );

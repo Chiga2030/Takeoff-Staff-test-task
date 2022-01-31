@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 const LoginForm = ({
   users,
   setUserData,
+  setFetchUserDataStatus,
 }) => (
   <>
     <Form.Label htmlFor="userSelect">Select user:</Form.Label>
@@ -26,6 +27,13 @@ const LoginForm = ({
       <Button
         onClick={ () => useFetchUser(
           document.forms.userSelectForm.select.value)
+          .then(data => {
+            setFetchUserDataStatus('request');
+            return data;
+          })
+          .then(data => new Promise(resolve => setTimeout(() => {
+            resolve(data);
+          }, 2000)))
           .then(data => setUserData(...data)) }
         className="col-sm-2 ms-4"
         type="button"

@@ -6,12 +6,12 @@ import AppNavBar from './AppNavBar';
 
 
 const AppNavBarContainer = props => (
-  <AppNavBar loginnedUser={ props.loginnedUser }/>
+  <AppNavBar loginedUser={ props.loginedUser }/>
 );
 
 
 export default connect(
   state => ({
-    loginnedUser: state.userList.loginedUser.name,
+    loginedUser: state.userList.loginedUser.name,
   })
 )(AppNavBarContainer);
