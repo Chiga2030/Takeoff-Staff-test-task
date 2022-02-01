@@ -1,6 +1,5 @@
 import useFetchUser from '../../hooks/useFetchUser';
 
-
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -13,9 +12,16 @@ const LoginForm = ({
   const onClickHandler = () => {
     setFetchUserDataStatus('request');
     useFetchUser(document.forms.userSelectForm.select.value)
+      // .then(response => {
+      //   if (!response.ok) {
+      //     console.log(response.ok);
+      //     return response;
+      //   } throw new Error('Error: Network is unavailable');
+      // })
       .then(data => setUserData(...data))
       .catch(error => {
         setFetchUserDataStatus('fail', error.message);
+        console.log(error.message);
       });
   };
 
