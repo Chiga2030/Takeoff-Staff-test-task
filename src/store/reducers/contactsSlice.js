@@ -48,12 +48,22 @@ const contactsSlice = createSlice({
         state[username].contactList.filter(
           (contact, contactIndex) => contactIndex !== index);
     },
+
+    onAdd (state, action) {
+      const {
+        username,
+        newContact,
+      } = action.payload;
+
+      state[username].contactList.push(newContact);
+    },
   },
 });
 
 
 export const {
   onDelete,
+  onAdd,
 } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

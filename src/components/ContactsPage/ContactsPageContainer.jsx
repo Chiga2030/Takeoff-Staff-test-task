@@ -5,6 +5,7 @@ import {
 
 import {
   onDelete,
+  onAdd,
 } from '../../store/reducers/contactsSlice';
 
 import ContactsPage from './ContactsPage';
@@ -21,6 +22,7 @@ const ContactsPageCotainer = () => {
       authUsername={ username }
       contactList={ contactList }
       onDelete={ payload => dispatch(onDelete(payload)) }
+      onAdd={ payload => dispatch(onAdd(payload)) }
     />
   );
 };

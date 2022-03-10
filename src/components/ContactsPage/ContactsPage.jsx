@@ -10,75 +10,115 @@ import {
   Trash,
 } from 'react-bootstrap-icons';
 import contactsSlice from '../../store/reducers/contactsSlice';
+import {
+  useState,
+} from 'react';
 
 
 const ContactsPage = ({
   authUsername,
   contactList,
   onDelete,
-}) => (
-  <Container>
-    <Card className="mb-4">
-      <Card.Header><h2>Contacts</h2></Card.Header>
+  onAdd,
+}) => {
+  const [
+    nameInput,
+    setNameInput,
+  ] = useState('');
+  const [
+    phoneInput,
+    setPhoneInput,
+  ] = useState('');
 
-      <Card.Body>
-        <Form>
-          <Form.Group className="mb-3" controlId="searchForm">
-            <Form.Label>Contacts search</Form.Label>
-            <Form.Control type="search" placeholder="Enter your query" />
-          </Form.Group>
-        </Form>
+  return (
+    <Container>
+      <Card className="mb-4">
+        <Card.Header><h2>Contacts</h2></Card.Header>
 
-        <Accordion flush alwaysOpen={ true }>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Add new contact</Accordion.Header>
+        <Card.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="searchForm">
+              <Form.Label>Contacts search</Form.Label>
+              <Form.Control type="search" placeholder="Enter your query" />
+            </Form.Group>
+          </Form>
 
-            <Accordion.Body>
-              <Form>
-                <Form.Group className="mb-3" controlId="addForm">
-                  <Form.Label>
-                    Descript your contact
-                  </Form.Label>
+          <Accordion flush alwaysOpen={ true }>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Add new contact</Accordion.Header>
 
-                  <div className="d-flex">
-                    <div className="me-2 col">
-                      <Form.Control
-                        className="mb-2"
-                        type="text"
-                        placeholder="Name of contact"
-                      />
+              <Accordion.Body>
+                <Form>
+                  <Form.Group className="mb-3" controlId="addForm">
+                    <Form.Label>
+                      Descript your contact
+                    </Form.Label>
 
-                      <Form.Control
-                        type="phone"
-                        placeholder="Phone number"
-                      />
+                    <div className="d-flex">
+                      <div className="me-2 col">
+                        <Form.Control
+                          className="mb-2"
+                          type="text"
+                          placeholder="Name of contact"
+                          value={ nameInput }
+                          onChange={
+                            event => setNameInput(event.target.value)
+                          }
+                        />
+
+                        <Form.Control
+                          type="phone"
+                          placeholder="Phone number"
+                          value={ phoneInput }
+                          onChange={
+                            event => setPhoneInput(event.target.value)
+                          }
+                        />
+                      </div>
+
+                      <Button
+                        type="button"
+                        className="col-2"
+                        disabled={ !nameInput || !phoneInput }
+                        onClick={ () => {
+                          onAdd({
+                            username: authUsername,
+                            newContact: {
+                              name: nameInput,
+                              phone: phoneInput,
+                            },
+                          });
+
+                          setNameInput('');
+                          setPhoneInput('');
+                        } }
+                      >
+                        Add contact
+                      </Button>
                     </div>
+                  </Form.Group>
+                </Form>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </Card.Body>
+      </Card>
 
-                    <Button type="button" className="col-2">
-                      Add contact
-                    </Button>
-                  </div>
-                </Form.Group>
-              </Form>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-      </Card.Body>
-    </Card>
-
-    <ListGroup as="ol" variant="flush" numbered>
-      { contactList.map((contact, index) => (
-        <Contact
-          authUsername={ authUsername }
-          phone={ contact.phone }
-          index={ index }
-          onDelete={ onDelete }
-          key={ contactsSlice.name + index }
-        />
-      )) }
-    </ListGroup>
-  </Container>
-);
+      <ListGroup as="ol" variant="flush" numbered>
+        { contactList.map((contact, index) => (
+          <Contact
+            authUsername={ authUsername }
+            name={ contact.name }
+            phone={ contact.phone }
+            index={ index }
+            onDelete={ onDelete }
+            key={ contactsSlice.name + index }
+          />
+        )) }
+      </ListGroup>
+    </Container>
+  );
+};
 
 
 const Contact = ({
