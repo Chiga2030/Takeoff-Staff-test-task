@@ -1,17 +1,18 @@
 import {
-  connect,
+  useSelector,
 } from 'react-redux';
 
 import LoginPage from './LoginPage';
 
 
-const LoginPageContainer = props => (
-  <LoginPage fetchStatus={ props.fetchStatus }/>
-);
+const LoginPageContainer = () => {
+  const fetchStatus = useSelector(
+    state => state.authUser.userInfo.fetchStatus);
+
+  return (
+    <LoginPage fetchStatus={ fetchStatus }/>
+  );
+};
 
 
-export default connect(
-  state => ({
-    fetchStatus: state.userList.loginedUser.fetchStatus,
-  })
-)(LoginPageContainer);
+export default LoginPageContainer;

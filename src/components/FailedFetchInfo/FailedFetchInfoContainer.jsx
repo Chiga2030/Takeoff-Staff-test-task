@@ -1,27 +1,27 @@
 import {
-  connect,
+  useSelector,
+  useDispatch,
 } from 'react-redux';
 import {
   onLogout,
-} from '../../store/actions/onLogout';
+} from '../../store/reducers/authUserSlice';
 
 import FailedFetchInfo from './FailedFetchInfo';
 
 
-const FailedFetchInfoContainer = props => (
-  <FailedFetchInfo
-    errorDescription={ props.errorDescription }
-    onLogout={ props.onLogout }
-  />
-);
+const FailedFetchInfoContainer = () => {
+  const errorDescription = useSelector(
+    state => state.authUser.userInfo.statusDescription);
+  const dispatch = useDispatch(null);
+
+  return (
+    <FailedFetchInfo
+      errorDescription={ errorDescription }
+      onLogout={ () => dispatch(onLogout()) }
+    />
+  );
+};
 
 // Failed to fetch
 
-export default connect(
-  state => ({
-    errorDescription: state.userList.loginedUser.statusDescription,
-  }),
-  {
-    onLogout,
-  }
-)(FailedFetchInfoContainer);
+export default FailedFetchInfoContainer;

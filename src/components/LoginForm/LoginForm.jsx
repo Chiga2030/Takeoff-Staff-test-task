@@ -10,18 +10,16 @@ const LoginForm = ({
   setFetchUserDataStatus,
 }) => {
   const onClickHandler = () => {
-    setFetchUserDataStatus('request');
+    setFetchUserDataStatus({
+      status: 'request',
+    });
     useFetchUser(document.forms.userSelectForm.select.value)
-      // .then(response => {
-      //   if (!response.ok) {
-      //     console.log(response.ok);
-      //     return response;
-      //   } throw new Error('Error: Network is unavailable');
-      // })
       .then(data => setUserData(...data))
       .catch(error => {
-        setFetchUserDataStatus('fail', error.message);
-        console.log(error.message);
+        setFetchUserDataStatus({
+          status: 'fail',
+          description: error.message,
+        });
       });
   };
 

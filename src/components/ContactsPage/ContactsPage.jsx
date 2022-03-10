@@ -9,9 +9,14 @@ import {
   PencilSquare,
   Trash,
 } from 'react-bootstrap-icons';
+import contactsSlice from '../../store/reducers/contactsSlice';
 
 
-const ContactsPage = () => (
+const ContactsPage = ({
+  authUsername,
+  contactList,
+  onDelete,
+}) => (
   <Container>
     <Card className="mb-4">
       <Card.Header><h2>Contacts</h2></Card.Header>
@@ -62,41 +67,64 @@ const ContactsPage = () => (
     </Card>
 
     <ListGroup as="ol" variant="flush" numbered>
-      <ListGroup.Item
-        as="li"
-        className="
-          d-flex
-          justify-content-between
-          align-items-start
-          border-bottom
-        "
-        action
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Patricia Lebsack</div>
-          +7(903)505-3369
-        </div>
-
-        <Button
-          className="align-self-center me-2"
-          variant="outline-secondary"
-          size="sm"
-        >
-          <span className="me-1">edit</span>
-          <PencilSquare />
-        </Button>
-
-        <Button
-          className="align-self-center"
-          variant="outline-danger"
-          size="sm"
-        >
-          <span className="me-1">delete</span>
-          <Trash />
-        </Button>
-      </ListGroup.Item>
+      { contactList.map((contact, index) => (
+        <Contact
+          authUsername={ authUsername }
+          phone={ contact.phone }
+          index={ index }
+          onDelete={ onDelete }
+          key={ contactsSlice.name + index }
+        />
+      )) }
     </ListGroup>
   </Container>
+);
+
+
+const Contact = ({
+  name,
+  phone,
+  index,
+  authUsername,
+  onDelete,
+}) => (
+  <ListGroup.Item
+    as="li"
+    className="
+      d-flex
+      justify-content-between
+      align-items-start
+      border-bottom
+    "
+    action
+  >
+    <div className="ms-2 me-auto">
+      <div className="fw-bold">{ name }</div>
+      { phone }
+    </div>
+
+    <Button
+      className="align-self-center me-2"
+      variant="outline-secondary"
+      size="sm"
+    >
+      <span className="me-1">edit</span>
+      <PencilSquare />
+    </Button>
+
+    <Button
+      className="align-self-center"
+      variant="outline-danger"
+      size="sm"
+      onClick={ () => onDelete({
+        username: authUsername,
+        index: index,
+      }) }
+    >
+      <span className="me-1">delete</span>
+      <Trash />
+    </Button>
+  </ListGroup.Item>
 );
 
 

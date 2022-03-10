@@ -1,26 +1,26 @@
 import {
-  connect,
+  useSelector,
+  useDispatch,
 } from 'react-redux';
 import {
   onLogout,
-} from '../../store/actions/onLogout';
+} from '../../store/reducers/authUserSlice';
 
 import ProfileCard from './ProfileCard';
 
 
-const ProfileCardContainer = props => (
-  <ProfileCard
-    loginedUser={ props.loginedUser }
-    onLogout={ props.onLogout }
-  />
-);
+const ProfileCardContainer = () => {
+  const loginedUser = useSelector(
+    state => state.authUser.userInfo);
+  const dispatch = useDispatch(null);
+
+  return (
+    <ProfileCard
+      loginedUser={ loginedUser }
+      onLogout={ () => dispatch(onLogout()) }
+    />
+  );
+};
 
 
-export default connect(
-  state => ({
-    loginedUser: state.userList.loginedUser,
-  }),
-  {
-    onLogout,
-  }
-)(ProfileCardContainer);
+export default ProfileCardContainer;

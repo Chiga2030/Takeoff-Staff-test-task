@@ -11,7 +11,7 @@ import AppContainer from './components/App/AppContainer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={ store }>
       <AppContainer />
     </Provider>
   </React.StrictMode>,

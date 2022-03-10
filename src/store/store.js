@@ -1,14 +1,19 @@
 import {
-  createStore,
-} from 'redux';
-import reducer from './reducers/rootReducer';
+  configureStore,
+} from '@reduxjs/toolkit';
+
+import userListSlice from './reducers/userListSlice';
+import authUserSlice from './reducers/authUserSlice';
+import contactsSlice from './reducers/contactsSlice';
 
 
-/* eslint-disable no-underscore-dangle */
-const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__
-  && window.__REDUX_DEVTOOLS_EXTENSION__();
-/* eslint-enable */
+const store = configureStore({
+  reducer: {
+    userList: userListSlice,
+    authUser: authUserSlice,
+    contacts: contactsSlice,
+  },
+});
 
-const store = createStore(reducer, reduxDevtools);
 
 export default store;
