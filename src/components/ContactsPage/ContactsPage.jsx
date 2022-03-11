@@ -5,22 +5,21 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 
-import {
-  PencilSquare,
-  Trash,
-} from 'react-bootstrap-icons';
-import contactsSlice from '../../store/reducers/contactsSlice';
+import Contact from './components/Contact';
 
 
 const ContactsPage = ({
   authUsername,
   contactList,
-  onDelete,
+  onDeleteHandler,
   onAddNewContactHandler,
   nameInput,
   setNameInput,
   phoneInput,
   setPhoneInput,
+  onSaveContactHandler,
+  searchQuery,
+  setSearchQuery,
 }) => (
   <Container>
     <Card className="mb-4">
@@ -30,7 +29,12 @@ const ContactsPage = ({
         <Form>
           <Form.Group className="mb-3" controlId="searchForm">
             <Form.Label>Contacts search</Form.Label>
-            <Form.Control type="search" placeholder="Enter your query" />
+            <Form.Control
+              type="search"
+              placeholder="Enter your query"
+              value={ searchQuery }
+              onChange={ event => setSearchQuery(event.target.value) }
+            />
           </Form.Group>
         </Form>
 
@@ -81,65 +85,19 @@ const ContactsPage = ({
     </Card>
 
     <ListGroup as="ol" variant="flush" numbered>
-      { contactList.map((contact, index) => (
+      { contactList.map(contact => (
         <Contact
           authUsername={ authUsername }
           name={ contact.name }
           phone={ contact.phone }
-          index={ index }
-          onDelete={ onDelete }
-          key={ contactsSlice.name + index }
+          id={ contact.id }
+          onDeleteHandler={ onDeleteHandler }
+          onSaveContactHandler={ onSaveContactHandler }
+          key={ contact.id }
         />
       )) }
     </ListGroup>
   </Container>
-);
-
-
-const Contact = ({
-  name,
-  phone,
-  index,
-  authUsername,
-  onDelete,
-}) => (
-  <ListGroup.Item
-    as="li"
-    className="
-      d-flex
-      justify-content-between
-      align-items-start
-      border-bottom
-    "
-    action
-  >
-    <div className="ms-2 me-auto">
-      <div className="fw-bold">{ name }</div>
-      { phone }
-    </div>
-
-    <Button
-      className="align-self-center me-2"
-      variant="outline-secondary"
-      size="sm"
-    >
-      <span className="me-1">edit</span>
-      <PencilSquare />
-    </Button>
-
-    <Button
-      className="align-self-center"
-      variant="outline-danger"
-      size="sm"
-      onClick={ () => onDelete({
-        username: authUsername,
-        index: index,
-      }) }
-    >
-      <span className="me-1">delete</span>
-      <Trash />
-    </Button>
-  </ListGroup.Item>
 );
 
 

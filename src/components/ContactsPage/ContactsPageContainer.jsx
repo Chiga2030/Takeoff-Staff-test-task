@@ -6,6 +6,7 @@ import {
 import {
   onDelete,
   onAdd,
+  onSave,
 } from '../../store/reducers/contactsSlice';
 
 import {
@@ -16,10 +17,20 @@ import ContactsPage from './ContactsPage';
 
 
 const ContactsPageCotainer = () => {
+  const [
+    searchQuery,
+    setSearchQuery,
+  ] = useState('');
+
+
   const username = useSelector(state => state.authUser.userInfo.username);
   const contactList = useSelector(
-    state => state.contacts[username].contactList);
+    state => state.contacts[username].contactList).filter(
+    contact => new RegExp(
+      searchQuery.toLowerCase()).test(contact.name.toLowerCase()));
+
   const dispatch = useDispatch(null);
+
 
   const [
     nameInput,
@@ -45,16 +56,35 @@ const ContactsPageCotainer = () => {
     setPhoneInput('');
   };
 
+  const onSaveContactHandler = (id, newData) => {
+    dispatch(onSave({
+      username,
+      id,
+      newData,
+    }));
+  };
+
+  const onDeleteHandler = id => dispatch(
+    onDelete({
+      username,
+      id,
+    })
+  );
+
+
   return (
     <ContactsPage
       authUsername={ username }
       contactList={ contactList }
-      onDelete={ payload => dispatch(onDelete(payload)) }
+      onDeleteHandler={ onDeleteHandler }
       onAddNewContactHandler={ onAddNewContactHandler }
       nameInput={ nameInput }
       setNameInput={ setNameInput }
       phoneInput={ phoneInput }
       setPhoneInput={ setPhoneInput }
+      onSaveContactHandler={ onSaveContactHandler }
+      searchQuery={ searchQuery }
+      setSearchQuery={ setSearchQuery }
     />
   );
 };
