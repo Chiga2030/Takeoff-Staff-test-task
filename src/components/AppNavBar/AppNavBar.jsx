@@ -11,7 +11,7 @@ const AppNavBar = ({
   loginedUser = 'Guest',
 }) => (
   <Container className="mb-4">
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" className="px-3">
       <Navbar.Brand>
         Takeoff Staff
       </Navbar.Brand>
