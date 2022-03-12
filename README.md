@@ -10,4 +10,5 @@
 
 О выполненых задачах:
 - Работа с UI библиотекой Bootstrap-v5
-- 
+- Работа со стейт менеджером Redux и Redux Toolkit
+- Работа с middleware Redux Persist
