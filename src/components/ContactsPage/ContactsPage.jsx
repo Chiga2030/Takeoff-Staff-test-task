@@ -5,13 +5,22 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 
-import {
-  PencilSquare,
-  Trash,
-} from 'react-bootstrap-icons';
+import Contact from './components/Contact';
 
 
-const ContactsPage = () => (
+const ContactsPage = ({
+  authUsername,
+  contactList,
+  onDeleteHandler,
+  onAddNewContactHandler,
+  nameInput,
+  setNameInput,
+  phoneInput,
+  setPhoneInput,
+  onSaveContactHandler,
+  searchQuery,
+  setSearchQuery,
+}) => (
   <Container>
     <Card className="mb-4">
       <Card.Header><h2>Contacts</h2></Card.Header>
@@ -20,7 +29,12 @@ const ContactsPage = () => (
         <Form>
           <Form.Group className="mb-3" controlId="searchForm">
             <Form.Label>Contacts search</Form.Label>
-            <Form.Control type="search" placeholder="Enter your query" />
+            <Form.Control
+              type="search"
+              placeholder="Enter your query"
+              value={ searchQuery }
+              onChange={ event => setSearchQuery(event.target.value) }
+            />
           </Form.Group>
         </Form>
 
@@ -41,15 +55,24 @@ const ContactsPage = () => (
                         className="mb-2"
                         type="text"
                         placeholder="Name of contact"
+                        value={ nameInput }
+                        onChange={ event => setNameInput(event.target.value) }
                       />
 
                       <Form.Control
                         type="phone"
                         placeholder="Phone number"
+                        value={ phoneInput }
+                        onChange={ event => setPhoneInput(event.target.value) }
                       />
                     </div>
 
-                    <Button type="button" className="col-2">
+                    <Button
+                      type="button"
+                      className="col-2"
+                      disabled={ !nameInput || !phoneInput }
+                      onClick={ onAddNewContactHandler }
+                    >
                       Add contact
                     </Button>
                   </div>
@@ -62,39 +85,17 @@ const ContactsPage = () => (
     </Card>
 
     <ListGroup as="ol" variant="flush" numbered>
-      <ListGroup.Item
-        as="li"
-        className="
-          d-flex
-          justify-content-between
-          align-items-start
-          border-bottom
-        "
-        action
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Patricia Lebsack</div>
-          +7(903)505-3369
-        </div>
-
-        <Button
-          className="align-self-center me-2"
-          variant="outline-secondary"
-          size="sm"
-        >
-          <span className="me-1">edit</span>
-          <PencilSquare />
-        </Button>
-
-        <Button
-          className="align-self-center"
-          variant="outline-danger"
-          size="sm"
-        >
-          <span className="me-1">delete</span>
-          <Trash />
-        </Button>
-      </ListGroup.Item>
+      { contactList.map(contact => (
+        <Contact
+          authUsername={ authUsername }
+          name={ contact.name }
+          phone={ contact.phone }
+          id={ contact.id }
+          onDeleteHandler={ onDeleteHandler }
+          onSaveContactHandler={ onSaveContactHandler }
+          key={ contact.id }
+        />
+      )) }
     </ListGroup>
   </Container>
 );

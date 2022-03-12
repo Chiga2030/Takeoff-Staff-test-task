@@ -9,10 +9,12 @@ import {
 
 import AppNavBarContainer from '../AppNavBar/AppNavBarContainer';
 import LoginPageContainer from '../LoginPage/LoginPageContainer';
-import ContactsPage from '../ContactsPage/ContactsPage';
+import ContactsPageContainer from '../ContactsPage/ContactsPageContainer';
 
 
-const App = () => (
+const App = ({
+  isAuth,
+}) => (
   <Router>
     <div className="d-flex flex-column vh-100">
       <AppNavBarContainer />
@@ -27,7 +29,9 @@ const App = () => (
         </Route>
 
         <Route path='/contacts'>
-          <ContactsPage />
+          { isAuth
+            ? <ContactsPageContainer />
+            : <Redirect to='/' /> }
         </Route>
 
         <Redirect to='/' />

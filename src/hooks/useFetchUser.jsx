@@ -6,7 +6,11 @@ const useFetchUser = userName => {
 
   return fetch(url)
     .then(response => response.json())
-    .then(data => data);
+    .then(data => {
+      if (data.length) {
+        return data;
+      } throw new Error('Username is not exsist');
+    });
 };
 
 
