@@ -74,6 +74,8 @@ const contactsSlice = createSlice({
         newContact,
       } = action.payload;
 
+      newContact.id = Date.now();
+
       state[username].contactList.push(newContact);
     },
 
