@@ -30,9 +30,11 @@ const AppNavBar = ({
 
       <Navbar.Text>
         Signed in as:
-        <NavLink to="/login" className="ms-1">
-          { loginedUser }
-        </NavLink>
+        { loginedUser === 'Guest' ? ' Guest' : (
+          <NavLink to="/login" className="ms-1">
+            { loginedUser }
+          </NavLink>
+        ) }
       </Navbar.Text>
     </Navbar>
   </Container>
