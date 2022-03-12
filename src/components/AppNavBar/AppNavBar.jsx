@@ -17,9 +17,11 @@ const AppNavBar = ({
       </Navbar.Brand>
 
       <Nav className="me-auto flex-row">
-        <NavLink to="/login" className="ms-2">
-          Login
-        </NavLink>
+        { loginedUser === 'Guest' ? (
+          <NavLink to="/login" className="ms-2">
+            Login
+          </NavLink>
+        ) : false }
 
         <NavLink to="/contacts" className="ms-2">
           Contacts
