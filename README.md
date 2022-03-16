@@ -1,6 +1,7 @@
 # Takeoff-Staff-test-task
 
-Тестовое задание на вакансию Front-end Developer для Takeoff Staff
+Тестовое задание:  
+**React-приложение личный кабинет**, на вакансию Front-end Developer для Takeoff Staff
 
 Посмотреть результат: 
 - ссылка на [GitHub pages](https://chiga2030.github.io/Takeoff-Staff-test-task/#/)
